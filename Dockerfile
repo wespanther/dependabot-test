@@ -39,7 +39,7 @@ RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -o app3
 
 
 # An old version of debian buster as a base
-FROM debian:buster-20210208
+FROM debian:buster-20230522
 
 COPY --from=builder1 /app1 /bin
 COPY --from=builder2 /app2 /bin
