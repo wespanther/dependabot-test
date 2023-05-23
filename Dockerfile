@@ -1,5 +1,5 @@
 # App 1
-FROM golang:1.19.1-buster as builder1
+FROM golang:1.20.4-buster as builder1
 
 WORKDIR /
 
@@ -12,7 +12,7 @@ COPY ./*.go ./
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -o app1
 
 # App 2
-FROM golang:1.19 as builder2
+FROM golang:1.20 as builder2
 
 WORKDIR /
 
@@ -25,7 +25,7 @@ COPY ./*.go ./
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -o app2
 
 # App 3
-FROM golang@sha256:784e4140c80d69e76185e0ee5f155aa91fcd8b1f12c9e6532f64da1977cc7abc as builder3
+FROM golang@sha256:685a22e459f9516f27d975c5cc6accc11223ee81fdfbbae60e39cc3b87357306 as builder3
 
 WORKDIR /
 
