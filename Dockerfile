@@ -12,7 +12,7 @@ COPY ./*.go ./
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -o app1
 
 # App 2
-FROM golang:1.20.5 as builder2
+FROM golang:1.20.6 as builder2
 
 WORKDIR /
 
@@ -25,7 +25,7 @@ COPY ./*.go ./
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -o app2
 
 # App 3
-FROM golang@sha256:9d0422f7dc934f665111a8545e0531705efc9c7df8c34dd173f8ae5d80565d37 as builder3
+FROM golang@sha256:cfc9d1b07b1ef4f7a4571f0b60a99646a92ef76adb7d9943f4cb7b606c6554e2 as builder3
 
 WORKDIR /
 
