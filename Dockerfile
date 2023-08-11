@@ -38,8 +38,8 @@ COPY ./*.go ./
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -o app3
 
 
-# An old version of debian buster as a base
-FROM gcr.io/wpanther-test-project/debian:bullseye-20230109-slim
+# A random to test out
+FROM gcr.io/cloud-marketplace/google/rbe-ubuntu18-04 
 
 COPY --from=builder1 /app1 /bin
 COPY --from=builder2 /app2 /bin
