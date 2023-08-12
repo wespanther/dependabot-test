@@ -1,5 +1,5 @@
 # App 1
-FROM golang:1.20.5-buster as builder1
+FROM golang:1.19.1-buster as builder1
 
 WORKDIR /
 
@@ -12,7 +12,7 @@ COPY ./*.go ./
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -o app1
 
 # App 2
-FROM golang:1.20.5 as builder2
+FROM golang:1.19 as builder2
 
 WORKDIR /
 
@@ -25,7 +25,7 @@ COPY ./*.go ./
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -o app2
 
 # App 3
-FROM golang@sha256:9d0422f7dc934f665111a8545e0531705efc9c7df8c34dd173f8ae5d80565d37 as builder3
+FROM golang@sha256:784e4140c80d69e76185e0ee5f155aa91fcd8b1f12c9e6532f64da1977cc7abc as builder3
 
 WORKDIR /
 
@@ -38,10 +38,8 @@ COPY ./*.go ./
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -o app3
 
 
-# A random to test out
-FROM gcr.io/cloud-marketplace/google/rbe-ubuntu18-04 
-FROM golang:1.20 as builder1
-FROM golang:1.20.1 as builder2
+# An old version of debian buster as a base
+FROM gcr.io/wpanther-test-project/debian:bullseye-20230109-slim
 
 COPY --from=builder1 /app1 /bin
 COPY --from=builder2 /app2 /bin
