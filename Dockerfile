@@ -38,14 +38,8 @@ COPY ./*.go ./
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -o app3
 
 
-# A random to test out
-FROM gcr.io/cloud-marketplace/google/rbe-ubuntu18-04 
-FROM golang:1.20 as builder1
-FROM golang:1.20.1 as builder2
-FROM golang:latest as builder3
+# Random images to test out
 FROM gcr.io/distroless/static
-FROM gcr.io/distroless/static:latest
-FROM gcr.io/google-containers/pause:3.1
 
 COPY --from=builder1 /app1 /bin
 COPY --from=builder2 /app2 /bin
