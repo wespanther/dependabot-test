@@ -42,6 +42,7 @@ RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -o app3
 FROM gcr.io/cloud-marketplace/google/rbe-ubuntu18-04 
 FROM golang:1.20 as builder1
 FROM golang:1.20.1 as builder2
+FROM gcr.io/distroless/static as other
 
 COPY --from=builder1 /app1 /bin
 COPY --from=builder2 /app2 /bin
