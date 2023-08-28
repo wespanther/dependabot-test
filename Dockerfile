@@ -43,7 +43,9 @@ FROM gcr.io/cloud-marketplace/google/rbe-ubuntu18-04
 FROM golang:1.20 as builder1
 FROM golang:1.20.1 as builder2
 FROM golang:latest as builder3
-FROM gcr.io/distroless/static as other
+FROM gcr.io/distroless/static
+FROM gcr.io/distroless/static:latest
+FROM gcr.io/google-containers/pause:3.1
 
 COPY --from=builder1 /app1 /bin
 COPY --from=builder2 /app2 /bin
