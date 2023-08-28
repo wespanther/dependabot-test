@@ -6,6 +6,10 @@
 version: 2
 updates:
   - package-ecosystem: "docker"
+    directory: "/testdir"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "docker"
     directory: "/"
     schedule:
       interval: "daily"
