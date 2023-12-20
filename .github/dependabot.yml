@@ -13,7 +13,13 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+    target-branch: "main"
   - package-ecosystem: "gomod"
     directory: "/"
     schedule:
       interval: "daily"
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    target-branch: "release-1.0"
